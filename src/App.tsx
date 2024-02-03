@@ -1,5 +1,6 @@
+import Forecast from "./components/Forecast";
 import Search from "./components/Search";
-import ForeCast from "./hooks/ForeCast";
+import ForeCast from "./hooks/ForecastApi";
 
 function App() {
   const { cities, options, forecast, onChange, onOptionSelect, onSubmit } =
@@ -8,7 +9,7 @@ function App() {
     <>
       <main className="flex justify-center items-center bg-gradient-to-br from-sky-500 via-sky-100 to-sky-950 h-[100vh] w-full">
         {forecast ? (
-          "we now have a ForeCast"
+          <Forecast forecast={forecast} />
         ) : (
           <Search
             cities={cities}

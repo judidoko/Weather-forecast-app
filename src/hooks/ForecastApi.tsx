@@ -1,12 +1,12 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { optionType } from "../types";
+import { forecastType, optionType } from "../types";
 
-const ForeCast = () => {
+const ForecastApi = () => {
   // Hooks
   const [cities, setCities] = useState<string>("");
   const [options, setOptions] = useState<[]>([]);
   const [city, setCity] = useState<optionType | null>(null);
-  const [forecast, setForecast] = useState<null>(null);
+  const [forecast, setForecast] = useState<forecastType | null>(null);
 
   // Api call
   const searchOptions = (value: string) => {
@@ -31,12 +31,18 @@ const ForeCast = () => {
   const getForecast = (city: optionType) => {
     // Api Call
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${
         city.lon
       }&units=metric&appid=${import.meta.env.VITE_APP_API_KEY}`
     )
       .then((res) => res.json())
-      .then((data) => setForecast(data));
+      .then((data) => {
+        const forecastData = {
+          ...data.city,
+          list: data.list.slice(0, 20),
+        };
+        setForecast(forecastData);
+      });
   };
 
   const onSubmit = () => {
@@ -65,4 +71,4 @@ const ForeCast = () => {
   };
 };
 
-export default ForeCast;
+export default ForecastApi;
