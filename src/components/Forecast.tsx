@@ -1,4 +1,10 @@
-import { getSunTime, getWindDirection } from "../helpers";
+import {
+  getHumidityValue,
+  getPop,
+  getSunTime,
+  getVisibilityValue,
+  getWindDirection,
+} from "../helpers";
 import { forecastType } from "../types";
 import { BsSunrise, BsSunset } from "react-icons/bs";
 import WeatherPredicts from "./WeatherPredicts";
@@ -69,7 +75,6 @@ const Forecast = ({ forecast }: Props): JSX.Element => {
               <BsSunset className="text-2xl" />
               <span className="mt-2">{getSunTime(forecast.sunset)}</span>
             </div>
-            {/* Wind */}
             <WeatherPredicts
               icon="wind"
               title="Wind"
@@ -77,6 +82,44 @@ const Forecast = ({ forecast }: Props): JSX.Element => {
               description={`${getWindDirection(
                 Math.round(today.wind.degs)
               )}, gusts ${today.wind.gust.toFixed(1)} Km/h`}
+            />
+            <WeatherPredicts
+              icon="feels"
+              title="Feels Like"
+              info={<Degree temp={Math.round(today.main.feels_like)} />}
+              description={`Feels ${
+                Math.round(today.main.feels_like) < Math.round(today.main.temp)
+                  ? "Colder"
+                  : "Warmer"
+              }`}
+            />
+            <WeatherPredicts
+              icon="humidity"
+              title="Humidity"
+              info={`${today.main.humidity} %`}
+              description={getHumidityValue(today.main.humidity)}
+            />
+            <WeatherPredicts
+              icon="pop"
+              title="Precipitation"
+              info={`${Math.round(today.pop * 1000)}%`}
+              description={`${getPop(today.pop)}, clouds at ${
+                today.clouds.all
+              }%`}
+            />
+            <WeatherPredicts
+              icon="pressure"
+              title="Pressure"
+              info={`${today.main.pressure} hPa`}
+              description={`${
+                Math.round(today.main.pressure) < 1013 ? "Lower" : "Higher"
+              } than standard`}
+            />
+            <WeatherPredicts
+              icon="visibility"
+              title="Visibility"
+              info={`${(today.visibility / 1000).toFixed()} Km`}
+              description={getVisibilityValue(today.visibility)}
             />
           </section>
         </div>

@@ -5,7 +5,7 @@ import { BiTime } from "react-icons/bi";
 import { SiRainmeter } from "react-icons/si";
 
 type Props = {
-  icon: "wind" | "humidity" | "visibility" | "pressure" | "pop";
+  icon: "wind" | "feels" | "humidity" | "visibility" | "pressure" | "pop";
   title: string;
   info: string | JSX.Element;
   description: string;

@@ -7,7 +7,7 @@ function App() {
     ForeCast();
   return (
     <>
-      <main className="flex justify-center items-center bg-gradient-to-br from-sky-500 via-sky-100 to-sky-950 h-[100vh] w-full">
+      <main className="flex justify-center items-center bg-gradient-to-br from-sky-500 via-sky-100 to-sky-950 h-full w-full">
         {forecast ? (
           <Forecast forecast={forecast} />
         ) : (
