@@ -1,6 +1,7 @@
-import { getSunTime } from "../helpers";
+import { getSunTime, getWindDirection } from "../helpers";
 import { forecastType } from "../types";
 import { BsSunrise, BsSunset } from "react-icons/bs";
+import WeatherPredicts from "./WeatherPredicts";
 
 type Props = {
   forecast: forecastType;
@@ -59,7 +60,7 @@ const Forecast = ({ forecast }: Props): JSX.Element => {
               </div>
             ))}
           </section>
-          <section className="flex justify-between text-zinc-700">
+          <section className="flex flex-wrap justify-between text-zinc-700">
             <div className="w-[140px] text-xs font-bold flex flex-col items-center bg-white/20 backdrop-blur-lg  rounded drop-shadow-lg py-4 mb-5">
               <BsSunrise className="text-2xl" />
               <span className="mt-2">{getSunTime(forecast.sunrise)}</span>
@@ -68,6 +69,15 @@ const Forecast = ({ forecast }: Props): JSX.Element => {
               <BsSunset className="text-2xl" />
               <span className="mt-2">{getSunTime(forecast.sunset)}</span>
             </div>
+            {/* Wind */}
+            <WeatherPredicts
+              icon="wind"
+              title="Wind"
+              info={`${Math.round(today.wind.speed)} Km/h`}
+              description={`${getWindDirection(
+                Math.round(today.wind.degs)
+              )}, gusts ${today.wind.gust.toFixed(1)} Km/h`}
+            />
           </section>
         </div>
       </div>
