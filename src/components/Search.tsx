@@ -26,7 +26,7 @@ function Search({
           </h1>
           <p className="text-sm mt-2">
             Enter below a any location you want to know the weather of and
-            select an option from the dropdown
+            select an option from the dropdown provided
           </p>
           <div className="relative flex mt-10 md:mt-4">
             <input

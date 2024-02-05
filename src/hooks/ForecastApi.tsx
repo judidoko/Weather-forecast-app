@@ -16,7 +16,8 @@ const ForecastApi = () => {
       }`
     )
       .then((res) => res.json())
-      .then((data) => setOptions(data));
+      .then((data) => setOptions(data))
+      .catch((e) => console.log(e));
   };
 
   // Onchange function
@@ -42,7 +43,8 @@ const ForecastApi = () => {
           list: data.list.slice(0, 20),
         };
         setForecast(forecastData);
-      });
+      })
+      .catch((e) => console.log(e));
   };
 
   const onSubmit = () => {

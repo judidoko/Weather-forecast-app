@@ -75,6 +75,7 @@ const Forecast = ({ forecast }: Props): JSX.Element => {
               <BsSunset className="text-2xl" />
               <span className="mt-2">{getSunTime(forecast.sunset)}</span>
             </div>
+
             <WeatherPredicts
               icon="wind"
               title="Wind"
