@@ -68,10 +68,12 @@ const Forecast = ({ forecast }: Props): JSX.Element => {
           </section>
           <section className="flex flex-wrap justify-between text-zinc-700">
             <div className="w-[140px] text-xs font-bold flex flex-col items-center bg-white/20 backdrop-blur-lg  rounded drop-shadow-lg py-4 mb-5">
+              <p>Sunrise</p>
               <BsSunrise className="text-2xl" />
               <span className="mt-2">{getSunTime(forecast.sunrise)}</span>
             </div>
             <div className="w-[140px] text-xs font-bold flex flex-col items-center bg-white/20 backdrop-blur-lg  rounded drop-shadow-lg py-4 mb-5">
+              <p>Sunset</p>
               <BsSunset className="text-2xl" />
               <span className="mt-2">{getSunTime(forecast.sunset)}</span>
             </div>
