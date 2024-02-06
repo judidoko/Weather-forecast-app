@@ -25,8 +25,8 @@ function Search({
             Weather <span className="font-black">Forecast</span>
           </h1>
           <p className="text-sm mt-2">
-            Enter below a any location you want to know the weather of and
-            select an option from the dropdown provided
+            Type below any location you want to know the weather of and select
+            an option from the dropdown provided
           </p>
           <div className="relative flex mt-10 md:mt-4">
             <input
